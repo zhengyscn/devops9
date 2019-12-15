@@ -1,12 +1,15 @@
 # DevOps9
 
 ## 基础环境
-- Python3.6.8
+- Python 3.6.8
 - Django 2.2
 - MySQL 5.6
 - CentOS 6.8+
 
 ## 序列化和反序列化
+- 翻译
+- 验证
+- 数据库操作
 ```bash
 序列化      // database -> django -> 用户
 反序列化    // 用户 -> django -> database
@@ -14,8 +17,30 @@
 
 ## FBV / CBV / DRF
 ```bash
-
+FBV: function base view
+CBV: class base view
+DRF: Django rest framework
 ```
+
+## DRF解决问题
+```bash
+1. 序列化和反序列化
+- 将数据库中的数据翻译成json
+- 将用户的输入的内容，转化成dict/list
+2. view视图如何响应用户的请求
+- 用户输入url+method(GET/POST/PUT/DELETE)+DATA
+如何找到对应的view
+```
+
+## DRF分类
+- 视图类（view/APIView/GenericAPIView  
+负责处理request/response/分页/搜索/过滤等
+- 视图工具类(mixins)  
+负责处理具体的操作即增删改查等
+- 视图集  
+ViewSet/GenericViewSet
+
+视图集 = 视图类 + 视图工具类
 
 ## 问题汇总
 - 库兼容问题
