@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'rest_framework.authtoken',
     'users.apps.UsersConfig',
     'books.apps.BooksConfig',
 ]
@@ -129,3 +130,17 @@ STATIC_URL = '/static/'
 
 ######### APPEND ###########
 AUTH_USER_MODEL = 'users.UserProfile'
+
+# 全局
+REST_FRAMEWORK = {
+    # 'DEFAULT_SCHEMA_CLASSES' : 'rest_framework.schemas.AutoSchema',
+    # 'DEFAULT_PERMISSION_CLASSES': (
+    #     'rest_framework.permissions.IsAuthenticated',
+    #     # 'rest_framework.permissions.AllowAny',
+    # ),
+    # # 身份验证
+    # 'DEFAULT_AUTHENTICATION_CLASSES': (
+    #     'rest_framework.authentication.BasicAuthentication',
+    #     'rest_framework.authentication.SessionAuthentication',
+    # )
+}

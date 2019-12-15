@@ -2,8 +2,12 @@ from django.http import Http404
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from rest_framework import mixins
+from rest_framework import viewsets
 from rest_framework.response import Response
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 
 from .serializers3 import PublishSerializer
@@ -137,7 +141,41 @@ class PublishMixinsGenericApiView(mixins.ListModelMixin,
         return self.create(request, *args, **kwargs)
 
     def put(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+        return self.update(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+        return self.destroy(request, *args, **kwargs)
+
+
+# 单查询拆分
+class PublishListCreateRetrieveUpdateDestroyApiView(ListCreateAPIView, RetrieveUpdateDestroyAPIView):
+    MODEL_CLASS = Publish
+    queryset = MODEL_CLASS.objects.all()
+    serializer_class = PublishSerializer
+
+
+# 等价于PublishxApiViewSets2
+class PublishxApiViewSets1(viewsets.GenericViewSet,
+                      mixins.CreateModelMixin,
+                      mixins.ListModelMixin,
+                      mixins.UpdateModelMixin,
+                      mixins.RetrieveModelMixin,
+                      mixins.DestroyModelMixin):
+    MODEL_CLASS = Publish
+    queryset = MODEL_CLASS.objects.all()
+    serializer_class = PublishSerializer
+
+
+# PublishxApiViewSets1
+class PublishxApiViewSets2(viewsets.ModelViewSet):
+    MODEL_CLASS = Publish
+    queryset = MODEL_CLASS.objects.all()
+    serializer_class = PublishSerializer
+
+
+class PublishxApiViewSets3(viewsets.ModelViewSet):
+    MODEL_CLASS = Publish
+    queryset = MODEL_CLASS.objects.all()
+    serializer_class = PublishSerializer
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]

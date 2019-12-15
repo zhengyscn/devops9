@@ -11,13 +11,9 @@ from django.contrib.auth import get_user_model
 from django.views.generic import View
 
 
-
-
-
-
-
 # 实例化settings.AUTH_USER_MODEL
 User = get_user_model()
+
 
 
 def UserListV1(request, *args, **kwargs):
