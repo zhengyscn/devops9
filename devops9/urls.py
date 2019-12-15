@@ -24,6 +24,11 @@ from users.views import UserListV4
 from users.views import UserList5
 from users.views import UserListView6
 
+# Application/books
+from books.views import PublishApiView
+from books.views import PublishGenericApiView
+from books.views import PublishMixinsGenericApiView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/v1', UserListV1),
@@ -32,4 +37,11 @@ urlpatterns = [
     path('users/v4', UserListV4),
     path('users/v5', UserList5),
     path('users/v6', UserListView6.as_view()),
+
+    path('books/publish/v1', PublishApiView.as_view()),
+    path('books/publish/v1/<int:pk>', PublishApiView.as_view()),
+    path('books/publish/v2', PublishGenericApiView.as_view()),
+    path('books/publish/v2/<int:pk>', PublishGenericApiView.as_view()),
+    path('books/publish/v3', PublishMixinsGenericApiView.as_view()),
+    path('books/publish/v3/<int:pk>', PublishMixinsGenericApiView.as_view()),
 ]
