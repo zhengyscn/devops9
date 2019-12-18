@@ -10,8 +10,10 @@ from rest_framework.authentication import BasicAuthentication, SessionAuthentica
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 
-from .serializers3 import PublishSerializer
+from .serializers import PublishSerializer
+from .serializers import BookSerializer
 from .models import Publish
+from .models import Book
 
 
 
@@ -179,3 +181,11 @@ class PublishxApiViewSets3(viewsets.ModelViewSet):
     serializer_class = PublishSerializer
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
+
+
+class BookApiViewSets1(viewsets.ModelViewSet):
+    MODEL_CLASS = Book
+    queryset = MODEL_CLASS.objects.all()
+    serializer_class = BookSerializer
+    # authentication_classes = [SessionAuthentication, BasicAuthentication]
+    # permission_classes = [IsAuthenticated]

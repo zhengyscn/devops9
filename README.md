@@ -33,7 +33,8 @@ DRF: Django rest framework
 ```
 
 ## DRF分类
-- 视图类（view/APIView/GenericAPIView  
+![DRF1](./imgs/DRF继承图谱.jpg)
+- 视图类（view(Django)/APIView/GenericAPIView  
 负责处理request/response/分页/搜索/过滤等
 - 视图工具类(mixins)  
 负责处理具体的操作即增删改查等

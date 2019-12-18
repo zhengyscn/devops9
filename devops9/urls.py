@@ -36,12 +36,14 @@ from books.views import PublishListCreateRetrieveUpdateDestroyApiView
 from books.views import PublishxApiViewSets1
 from books.views import PublishxApiViewSets2
 from books.views import PublishxApiViewSets3
+from books.views import BookApiViewSets1
 
 
 
 route = DefaultRouter()
-route.register("api/v1/books", PublishxApiViewSets2)
-route.register("api/v2/books", PublishxApiViewSets3)
+route.register(r"api/v1/books", PublishxApiViewSets2)
+route.register(r"api/v2/books", PublishxApiViewSets3)
+route.register(r"api/v3/books", BookApiViewSets1)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
