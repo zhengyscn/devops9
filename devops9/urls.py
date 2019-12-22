@@ -27,6 +27,13 @@ from users.views import UserListV4
 from users.views import UserList5
 from users.views import UserListView6
 from users.authviews import CustomAuthToken
+from users.views import PermissionViewSet1
+from users.views import PermissionViewSet2
+from users.views import PermissionViewSet3
+from users.views import GroupViewSet1
+from users.views import GroupPermissionViewSet
+from users.views import UserViewSet1
+from users.views import UserPermissionGroupViewSet
 
 # Application/books
 from books.views import PublishApiView
@@ -44,6 +51,15 @@ route = DefaultRouter()
 route.register(r"api/v1/books", PublishxApiViewSets2)
 route.register(r"api/v2/books", PublishxApiViewSets3)
 route.register(r"api/v3/books", BookApiViewSets1)
+route.register(r"api/v3/users", UserViewSet1)
+route.register(r"api/v4/users/permission", PermissionViewSet1)
+route.register(r"api/v5/users/permission", PermissionViewSet2)
+route.register(r"api/v6/users/permission", PermissionViewSet3)
+route.register(r"api/v7/users/group", GroupViewSet1)
+route.register(r"api/v7/users/user_group_permission", UserPermissionGroupViewSet)
+route.register(r"api/v8/group/permission", GroupPermissionViewSet)
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

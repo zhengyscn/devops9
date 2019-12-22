@@ -55,7 +55,20 @@ django.core.exceptions.ImproperlyConfigured: mysqlclient 1.3.13 or newer is requ
 
 ```
 
-- 扩展auth_user表时报错
+## 用户权限系统（m2m）
+- 用户
+- 角色
+- 权限（单独表）
+
+## 过滤器
+- [django-filter](https://django-filter.readthedocs.io/en/master/index.html)
+
+
+## Vue
+- 双向绑定
+- 组件化
+
+## 扩展auth_user表时报错
 ```bash
 $ pipenv run python manage.py makemigrations
 django.db.migrations.exceptions.InconsistentMigrationHistory: Migration admin.0001_initial is applied before its dependency users.0001_initial on database 'default'.
